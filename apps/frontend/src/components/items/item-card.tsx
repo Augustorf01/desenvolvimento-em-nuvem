@@ -18,7 +18,14 @@ export function ItemCard({ item }: ItemCardProps) {
 
       <h2 className="text-xl font-semibold text-slate-100">{item.title}</h2>
       <p className="mt-2 text-sm text-slate-400">{item.authorOrDirector}</p>
-      <p className="mt-4 flex-1 text-sm leading-6 text-slate-300">{item.description}</p>
+      <div className="mt-4 flex min-h-0 flex-1 flex-col">
+        <p
+          className="line-clamp-4 text-sm leading-6 text-slate-300"
+          title={item.description}
+        >
+          {item.description}
+        </p>
+      </div>
 
       <div className="mt-6 flex items-center justify-between">
         <span className="text-sm text-slate-500">{item.genre ?? "No genre"}</span>
