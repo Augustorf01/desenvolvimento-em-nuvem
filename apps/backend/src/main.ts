@@ -4,6 +4,8 @@ import { DocumentBuilder, SwaggerModule } from "@nestjs/swagger";
 
 import { AppModule } from "./app.module";
 import { getBackendEnv } from "./config/env";
+import { LoggingInterceptor } from "./logging.interceptor";
+import { AllExceptionsFilter } from "./http-exception.filter";
 
 async function bootstrap() {
   const env = getBackendEnv();
@@ -13,6 +15,11 @@ async function bootstrap() {
     origin: env.corsOrigin,
     credentials: true,
   });
+
+  app.useGlobalInterceptors(new LoggingInterceptor());
+
+  app.useGlobalFilters(new AllExceptionsFilter());
+
 
   app.useGlobalPipes(
     new ValidationPipe({
