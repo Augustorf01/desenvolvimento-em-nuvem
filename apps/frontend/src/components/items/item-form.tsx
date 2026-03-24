@@ -137,6 +137,7 @@ export function ItemForm({ initialValue, submitLabel, onSubmit }: ItemFormProps)
           <input
             id="genre"
             value={genre}
+            maxLength={100}
             onChange={(event) => setGenre(event.target.value)}
             className="w-full rounded-xl border border-slate-700 bg-slate-950 px-4 py-3 text-slate-100"
           />
