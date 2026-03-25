@@ -46,19 +46,7 @@ export class ItemsService {
             coverUrl: dto.coverUrl ?? null,
         });
 
-        try {
-            return await this.itemRepository.save(item);
-        } catch (error) {
-            if (error instanceof Error) {
-                console.error('[ERROR]', {
-                    method: 'POST',
-                    route: '/items',
-                    message: error.message,
-                    timestamp: new Date().toISOString(),
-                });
-            }
-            throw error;
-        }
+        return await this.itemRepository.save(item);
 
     }
 
@@ -73,16 +61,7 @@ export class ItemsService {
             coverUrl: dto.coverUrl ?? item.coverUrl,
         });
 
-        try {
-            return await this.itemRepository.save(item);
-        } catch (error) {
-            console.error('[ERROR]', {
-                method: 'PUT',
-                route: `/items/${id}`,
-                message: error instanceof Error ? error.message : error,
-            });
-            throw error;
-        }
+        return await this.itemRepository.save(item);
     }
 
     async remove(id: string) {
