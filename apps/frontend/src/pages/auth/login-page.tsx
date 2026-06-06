@@ -15,8 +15,8 @@ export function LoginPage() {
   return (
     <section className="mx-auto max-w-md space-y-4">
       <div>
-        <h1 className="text-3xl font-semibold text-slate-100">Login</h1>
-        <p className="mt-2 text-sm text-slate-400">
+        <h1 className="text-2xl font-semibold text-slate-100 sm:text-3xl">Login</h1>
+        <p className="mt-2 text-sm text-slate-400 sm:text-base">
           Access your account to manage the catalog and publish reviews.
         </p>
       </div>

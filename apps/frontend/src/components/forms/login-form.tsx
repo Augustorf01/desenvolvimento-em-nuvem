@@ -1,4 +1,5 @@
 import { FormEvent, useState } from "react";
+import { Loader2, LogIn } from "lucide-react";
 
 type LoginFormProps = {
   onSubmit: (email: string, password: string) => Promise<void>;
@@ -62,8 +63,13 @@ export function LoginForm({ onSubmit }: LoginFormProps) {
       <button
         type="submit"
         disabled={isSubmitting}
-        className="w-full rounded-xl bg-cyan-500 px-4 py-3 font-semibold text-slate-950 transition hover:bg-cyan-400 disabled:cursor-not-allowed disabled:opacity-60"
+        className="flex w-full items-center justify-center gap-2 rounded-xl bg-cyan-500 px-4 py-3 text-sm font-semibold text-slate-950 transition hover:bg-cyan-400 disabled:cursor-not-allowed disabled:opacity-60 sm:text-base"
       >
+        {isSubmitting ? (
+          <Loader2 className="h-5 w-5 animate-spin" aria-hidden="true" />
+        ) : (
+          <LogIn className="h-5 w-5" aria-hidden="true" />
+        )}
         {isSubmitting ? "Signing in..." : "Sign in"}
       </button>
     </form>

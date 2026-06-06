@@ -1,4 +1,5 @@
 import { FormEvent, useState } from "react";
+import { Loader2, Send } from "lucide-react";
 
 type ReviewFormProps = {
   onSubmit: (rating: number, comment: string) => Promise<void>;
@@ -66,8 +67,13 @@ export function ReviewForm({ onSubmit }: ReviewFormProps) {
       <button
         type="submit"
         disabled={isSubmitting}
-        className="rounded-xl bg-cyan-500 px-5 py-3 font-semibold text-slate-950 transition hover:bg-cyan-400 disabled:cursor-not-allowed disabled:opacity-60"
+        className="flex items-center justify-center gap-2 rounded-xl bg-cyan-500 px-5 py-3 text-sm font-semibold text-slate-950 transition hover:bg-cyan-400 disabled:cursor-not-allowed disabled:opacity-60 sm:text-base"
       >
+        {isSubmitting ? (
+          <Loader2 className="h-5 w-5 animate-spin" aria-hidden="true" />
+        ) : (
+          <Send className="h-5 w-5" aria-hidden="true" />
+        )}
         {isSubmitting ? "Sending..." : "Publish review"}
       </button>
     </form>

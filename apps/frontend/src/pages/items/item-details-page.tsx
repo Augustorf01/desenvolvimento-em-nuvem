@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
+import { ArrowLeft, Trash2 } from "lucide-react";
 
 import { useAuth } from "../../app/providers/auth-provider";
 import { ItemForm } from "../../components/items/item-form";
@@ -100,7 +101,11 @@ export function ItemDetailsPage() {
     return (
       <div className="space-y-4">
         <p className="text-sm text-rose-400">{error ?? "Item not found."}</p>
-        <Link to="/" className="text-sm text-cyan-300 hover:text-cyan-200">
+        <Link
+          to="/"
+          className="inline-flex items-center gap-1.5 text-sm text-cyan-300 hover:text-cyan-200"
+        >
+          <ArrowLeft className="h-4 w-4" aria-hidden="true" />
           Back to catalog
         </Link>
       </div>
@@ -118,9 +123,13 @@ export function ItemDetailsPage() {
           <span className="text-sm text-slate-500">{item.genre ?? "No genre"}</span>
         </div>
 
-        <h1 className="mt-4 text-4xl font-semibold text-slate-50">{item.title}</h1>
-        <p className="mt-3 text-lg text-slate-300">{item.authorOrDirector}</p>
-        <p className="mt-6 max-w-3xl text-sm leading-7 text-slate-300">{item.description}</p>
+        <h1 className="mt-4 text-2xl font-semibold text-slate-50 sm:text-3xl md:text-4xl">
+          {item.title}
+        </h1>
+        <p className="mt-3 text-base text-slate-300 sm:text-lg">{item.authorOrDirector}</p>
+        <p className="mt-6 max-w-3xl text-sm leading-7 text-slate-300 sm:text-base">
+          {item.description}
+        </p>
       </div>
 
       <div className="grid gap-8 lg:grid-cols-[1.2fr,0.8fr]">
@@ -128,8 +137,8 @@ export function ItemDetailsPage() {
           {isAuthenticated ? (
             <div className="space-y-4">
               <div>
-                <h2 className="text-2xl font-semibold text-slate-100">Manage item</h2>
-                <p className="mt-2 text-sm text-slate-400">
+                <h2 className="text-xl font-semibold text-slate-100 sm:text-2xl">Manage item</h2>
+                <p className="mt-2 text-sm text-slate-400 sm:text-base">
                   Edit or remove this item from the collaborative catalog.
                 </p>
               </div>
@@ -137,16 +146,17 @@ export function ItemDetailsPage() {
               <button
                 type="button"
                 onClick={() => void handleDeleteItem()}
-                className="rounded-xl border border-rose-500/40 px-5 py-3 text-sm font-semibold text-rose-300 hover:border-rose-400 hover:text-rose-200"
+                className="flex items-center justify-center gap-2 rounded-xl border border-rose-500/40 px-5 py-3 text-sm font-semibold text-rose-300 transition hover:border-rose-400 hover:text-rose-200"
               >
+                <Trash2 className="h-5 w-5" aria-hidden="true" />
                 Delete item
               </button>
             </div>
           ) : null}
 
           <div>
-            <h2 className="text-2xl font-semibold text-slate-100">Reviews</h2>
-            <p className="mt-2 text-sm text-slate-400">
+            <h2 className="text-xl font-semibold text-slate-100 sm:text-2xl">Reviews</h2>
+            <p className="mt-2 text-sm text-slate-400 sm:text-base">
               Read what other users thought about this item.
             </p>
           </div>
@@ -155,8 +165,8 @@ export function ItemDetailsPage() {
 
         <div className="space-y-4">
           <div>
-            <h2 className="text-2xl font-semibold text-slate-100">Your review</h2>
-            <p className="mt-2 text-sm text-slate-400">
+            <h2 className="text-xl font-semibold text-slate-100 sm:text-2xl">Your review</h2>
+            <p className="mt-2 text-sm text-slate-400 sm:text-base">
               {isAuthenticated
                 ? "Share your opinion about this item."
                 : "Login to publish a review."}

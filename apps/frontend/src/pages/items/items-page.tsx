@@ -1,4 +1,5 @@
 import { ChangeEvent, useEffect, useState } from "react";
+import { Search } from "lucide-react";
 
 import { useAuth } from "../../app/providers/auth-provider";
 import { ItemForm } from "../../components/items/item-form";
@@ -58,8 +59,8 @@ export function ItemsPage() {
   return (
     <section className="space-y-8">
       <div className="space-y-3">
-        <h1 className="text-4xl font-semibold text-slate-50">Catalog</h1>
-        <p className="max-w-2xl text-sm leading-6 text-slate-400">
+        <h1 className="text-2xl font-semibold text-slate-50 sm:text-3xl md:text-4xl">Catalog</h1>
+        <p className="max-w-2xl text-sm leading-6 text-slate-400 sm:text-base">
           Explore books and movies, filter by type, and open each detail page to read or
           publish reviews.
         </p>
@@ -68,8 +69,8 @@ export function ItemsPage() {
       {isAuthenticated ? (
         <div className="space-y-4">
           <div>
-            <h2 className="text-2xl font-semibold text-slate-100">Add item</h2>
-            <p className="mt-2 text-sm text-slate-400">
+            <h2 className="text-xl font-semibold text-slate-100 sm:text-2xl">Add item</h2>
+            <p className="mt-2 text-sm text-slate-400 sm:text-base">
               Authenticated users can collaboratively curate the catalog.
             </p>
           </div>
@@ -78,13 +79,20 @@ export function ItemsPage() {
       ) : null}
 
       <div className="grid gap-4 rounded-2xl border border-slate-800 bg-slate-900 p-5 md:grid-cols-[2fr,1fr]">
-        <input
-          type="search"
-          value={search}
-          onChange={(event: ChangeEvent<HTMLInputElement>) => setSearch(event.target.value)}
-          placeholder="Search by title"
-          className="rounded-xl border border-slate-700 bg-slate-950 px-4 py-3 text-slate-100"
-        />
+        <div className="relative">
+          <Search
+            className="pointer-events-none absolute left-3 top-1/2 h-5 w-5 -translate-y-1/2 text-slate-500"
+            aria-hidden="true"
+          />
+          <input
+            type="search"
+            value={search}
+            onChange={(event: ChangeEvent<HTMLInputElement>) => setSearch(event.target.value)}
+            placeholder="Search by title"
+            aria-label="Search by title"
+            className="w-full rounded-xl border border-slate-700 bg-slate-950 py-3 pl-10 pr-4 text-slate-100"
+          />
+        </div>
 
         <select
           value={type}
