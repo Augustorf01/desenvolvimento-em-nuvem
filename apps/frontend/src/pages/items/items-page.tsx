@@ -89,6 +89,7 @@ export function ItemsPage() {
             value={search}
             onChange={(event: ChangeEvent<HTMLInputElement>) => setSearch(event.target.value)}
             placeholder="Search by title"
+            aria-label="Search by title"
             className="w-full rounded-xl border border-slate-700 bg-slate-950 py-3 pl-10 pr-4 text-slate-100"
           />
         </div>
