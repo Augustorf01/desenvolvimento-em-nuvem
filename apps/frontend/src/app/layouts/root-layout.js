@@ -1,8 +1,0 @@
-import { jsx as _jsx, Fragment as _Fragment, jsxs as _jsxs } from "react/jsx-runtime";
-import { Link, NavLink, Outlet } from "react-router-dom";
-import { useAuth } from "../providers/auth-provider";
-const linkClassName = ({ isActive }) => `rounded-full px-4 py-2 text-sm font-medium transition ${isActive ? "bg-cyan-500 text-slate-950" : "text-slate-200 hover:bg-slate-800"}`;
-export function RootLayout() {
-    const { isAuthenticated, logoutAction, user } = useAuth();
-    return (_jsxs("div", { className: "min-h-screen bg-slate-950 text-slate-100", children: [_jsx("header", { className: "border-b border-slate-800 bg-slate-900/80 backdrop-blur", children: _jsxs("div", { className: "mx-auto flex max-w-6xl items-center justify-between px-6 py-4", children: [_jsx(Link, { to: "/", className: "text-lg font-semibold text-cyan-400", children: "Biblioteca em Nuvem" }), _jsxs("nav", { className: "flex items-center gap-3", children: [_jsx(NavLink, { to: "/", className: linkClassName, children: "Catalog" }), isAuthenticated ? (_jsxs(_Fragment, { children: [_jsx(NavLink, { to: "/reviews/me", className: linkClassName, children: "My reviews" }), _jsx("span", { className: "text-sm text-slate-300", children: user?.name }), _jsx("button", { type: "button", onClick: logoutAction, className: "rounded-full border border-slate-700 px-4 py-2 text-sm font-medium hover:border-cyan-400 hover:text-cyan-300", children: "Logout" })] })) : (_jsxs(_Fragment, { children: [_jsx(NavLink, { to: "/login", className: linkClassName, children: "Login" }), _jsx(NavLink, { to: "/register", className: linkClassName, children: "Register" })] }))] })] }) }), _jsx("main", { className: "mx-auto max-w-6xl px-6 py-10", children: _jsx(Outlet, {}) })] }));
-}

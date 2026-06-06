@@ -42,8 +42,8 @@ export function ReviewHistoryPage() {
   return (
     <section className="space-y-6">
       <div>
-        <h1 className="text-3xl font-semibold text-slate-50">My reviews</h1>
-        <p className="mt-2 text-sm text-slate-400">
+        <h1 className="text-2xl font-semibold text-slate-50 sm:text-3xl">My reviews</h1>
+        <p className="mt-2 text-sm text-slate-400 sm:text-base">
           Review history associated with your authenticated account.
         </p>
       </div>

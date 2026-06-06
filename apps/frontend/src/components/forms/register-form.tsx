@@ -1,4 +1,5 @@
 import { FormEvent, useState } from "react";
+import { Loader2, UserPlus } from "lucide-react";
 
 type RegisterFormProps = {
   onSubmit: (name: string, email: string, password: string) => Promise<void>;
@@ -76,8 +77,13 @@ export function RegisterForm({ onSubmit }: RegisterFormProps) {
       <button
         type="submit"
         disabled={isSubmitting}
-        className="w-full rounded-xl bg-cyan-500 px-4 py-3 font-semibold text-slate-950 transition hover:bg-cyan-400 disabled:cursor-not-allowed disabled:opacity-60"
+        className="flex w-full items-center justify-center gap-2 rounded-xl bg-cyan-500 px-4 py-3 text-sm font-semibold text-slate-950 transition hover:bg-cyan-400 disabled:cursor-not-allowed disabled:opacity-60 sm:text-base"
       >
+        {isSubmitting ? (
+          <Loader2 className="h-5 w-5 animate-spin" aria-hidden="true" />
+        ) : (
+          <UserPlus className="h-5 w-5" aria-hidden="true" />
+        )}
         {isSubmitting ? "Creating account..." : "Create account"}
       </button>
     </form>
